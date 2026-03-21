@@ -1,0 +1,65 @@
+version: 2
+
+models:
+  - name: stg_pokemon
+    description: "Datos de Pokemon limpiados desde la PokeAPI"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 100
+          max_value: 2000
+    columns:
+      - name: pokemon_id
+        description: "ID único del Pokemon"
+        tests:
+          - unique
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_in_type_list:
+              column_type_list: [INTEGER, BIGINT]
+      - name: pokemon_name
+        description: "Nombre del Pokemon en minúsculas"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_match_regex:
+              regex: "^[a-z\\-]+$"
+      - name: height
+        description: "Altura del Pokemon en decímetros"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 1
+              max_value: 200
+      - name: weight
+        description: "Peso del Pokemon en hectogramos"
+        tests:
+          - not_null
+      - name: base_experience
+        description: "Experiencia base que otorga al ser derrotado"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: 0
+              max_value: 1000
+
+  - name: stg_openweather__current
+    description: "Datos de clima de Asunción desde Open-Meteo"
+    tests:
+      - dbt_expectations.expect_table_row_count_to_be_between:
+          min_value: 1
+          max_value: 400
+    columns:
+      - name: weather_date
+        description: "Fecha del registro climático"
+        tests:
+          - unique
+          - not_null
+      - name: temp_mean
+        description: "Temperatura media del día en Celsius"
+        tests:
+          - not_null
+          - dbt_expectations.expect_column_values_to_be_between:
+              min_value: -10
+              max_value: 50
+      - name: city
+        description: "Ciudad del registro"
+        tests:
+          - not_null

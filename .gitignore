@@ -1,0 +1,7 @@
+target/
+dbt_packages/
+logs/
+.env
+*.pyc
+load_pokemon.py
+load_weather.py
