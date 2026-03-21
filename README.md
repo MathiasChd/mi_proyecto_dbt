@@ -1,15 +1,33 @@
-Welcome to your new dbt project!
+# mi_proyecto_dbt
 
-### Using the starter project
+Proyecto dbt para la Maestría en Inteligencia Artificial - MIA 03  
+Facultad Politécnica - Universidad Nacional de Asunción
 
-Try running the following commands:
-- dbt run
-- dbt test
+## Stack
+- **Fuente:** PokeAPI + Open-Meteo
+- **Transformación:** dbt-duckdb 1.9.0
+- **Almacenamiento:** MotherDuck (DuckDB cloud)
 
+## Estructura
+```
+models/
+├── staging/
+│   ├── stg_pokemon.sql
+│   └── stg_openweather__current.sql
+├── intermediate/
+│   └── int_pokemon_enriched.sql
+└── marts/
+    └── obt_pokemon_analysis.sql
+```
 
-### Resources:
-- Learn more about dbt [in the docs](https://docs.getdbt.com/docs/introduction)
-- Check out [Discourse](https://discourse.getdbt.com/) for commonly asked questions and answers
-- Join the [chat](https://community.getdbt.com/) on Slack for live discussions and support
-- Find [dbt events](https://events.getdbt.com) near you
-- Check out [the blog](https://blog.getdbt.com/) for the latest news on dbt's development and best practices
+## DAG
+
+![DAG del proyecto](docs/dag.png)
+
+## Comandos
+```bash
+dbt run        # Ejecutar modelos
+dbt test       # Ejecutar tests
+dbt build      # Run + test
+dbt docs serve # Ver documentación
+```
