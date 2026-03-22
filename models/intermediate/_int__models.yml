@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: int_pokemon_enriched
+    description: "Pokemon enriquecido con tipos extraídos del JSON y ratio peso/altura"
+    columns:
+      - name: pokemon_id
+        description: "ID único del Pokemon"
+      - name: type_primary
+        description: "Tipo principal del Pokemon"
+      - name: type_secondary
+        description: "Tipo secundario del Pokemon (puede ser nulo)"
+      - name: bmi_ratio
+        description: "Ratio peso/altura como proxy de complexión"
