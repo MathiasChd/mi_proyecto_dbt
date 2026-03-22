@@ -1,8 +1,8 @@
-# mi_proyecto_dbt
+# Mathias Chaparro 
 
 Proyecto dbt para la Maestría en Inteligencia Artificial - MIA 03  
 Facultad Politécnica - Universidad Nacional de Asunción
-Mathias Chaparro
+
 ---
 
 ## Stack
